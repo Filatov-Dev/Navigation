@@ -14,6 +14,7 @@ class InfoViewController: UIViewController {
         button.setTitle("Show alert", for: .normal)
         button.backgroundColor = .systemGreen
         button.layer.cornerRadius = 18
+        button.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
         return button
     }()
     
@@ -21,7 +22,7 @@ class InfoViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemOrange
         view.addSubview(alertButton)
-        alertButton.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
+        
     }
     
     override func viewDidLayoutSubviews() {
