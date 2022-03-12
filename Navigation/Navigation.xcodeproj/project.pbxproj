@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		961AF54A27DA688F003438D8 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961AF54927DA688F003438D8 /* ProfileHeaderView.swift */; };
 		966F7BCA27D1270700C6A662 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966F7BC927D1270700C6A662 /* AppDelegate.swift */; };
 		966F7BCE27D1270800C6A662 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966F7BCD27D1270800C6A662 /* ViewController.swift */; };
 		966F7BD327D1270800C6A662 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 966F7BD227D1270800C6A662 /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		961AF54927DA688F003438D8 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		966F7BC627D1270700C6A662 /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		966F7BC927D1270700C6A662 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		966F7BCD27D1270800C6A662 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -41,6 +43,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		961AF54827DA6865003438D8 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				966F7BDF27D1313E00C6A662 /* ProfileViewController.swift */,
+				961AF54927DA688F003438D8 /* ProfileHeaderView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		966F7BBD27D1270700C6A662 = {
 			isa = PBXGroup;
 			children = (
@@ -60,11 +71,11 @@
 		966F7BC827D1270700C6A662 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				961AF54827DA6865003438D8 /* Profile */,
 				966F7BC927D1270700C6A662 /* AppDelegate.swift */,
 				966F7BCD27D1270800C6A662 /* ViewController.swift */,
 				966F7BDD27D1311F00C6A662 /* FeedViewController.swift */,
 				966F7BE127D7761A00C6A662 /* PostViewController.swift */,
-				966F7BDF27D1313E00C6A662 /* ProfileViewController.swift */,
 				966F7BE327D77D4400C6A662 /* InfoViewController.swift */,
 				966F7BD227D1270800C6A662 /* Assets.xcassets */,
 				966F7BD427D1270800C6A662 /* LaunchScreen.storyboard */,
@@ -147,6 +158,7 @@
 				966F7BDE27D1311F00C6A662 /* FeedViewController.swift in Sources */,
 				966F7BE027D1313E00C6A662 /* ProfileViewController.swift in Sources */,
 				966F7BCA27D1270700C6A662 /* AppDelegate.swift in Sources */,
+				961AF54A27DA688F003438D8 /* ProfileHeaderView.swift in Sources */,
 				966F7BE427D77D4400C6A662 /* InfoViewController.swift in Sources */,
 				966F7BE227D7761A00C6A662 /* PostViewController.swift in Sources */,
 			);

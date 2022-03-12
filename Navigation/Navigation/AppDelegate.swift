@@ -29,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         profileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), tag: 1)
         
         tabBarController.viewControllers = [feedNavigationController, profileNavigationViewController]
+        tabBarController.tabBar.backgroundColor = .white
         
         return true
     }
