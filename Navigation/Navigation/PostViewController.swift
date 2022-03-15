@@ -10,6 +10,7 @@ import UIKit
 class PostViewController: UIViewController {
 
     private let infoVC = InfoViewController()
+    private var newPost: Post?
     
     override func viewDidLoad() {
         super.viewDidLoad()

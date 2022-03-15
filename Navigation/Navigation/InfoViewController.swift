@@ -36,8 +36,14 @@ class InfoViewController: UIViewController {
     
     func infoAlert(){
         let alert = UIAlertController(title: "Что-то важное", message: "Тут должно быть что-то важное, но мы забыли это написать!((", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ну ладно", style: .cancel, handler: { action in
-        }))
+        let alertFirstAction = UIAlertAction(title: "Ну ладно", style: .cancel) { _ in
+            print("ok")
+        }
+        let alertSecondAction = UIAlertAction(title: "Так добавь", style: .destructive) { _ in
+            print("Добавляй")
+        }
+        alert.addAction(alertSecondAction)
+        alert.addAction(alertFirstAction)
         present(alert, animated: true)
     }
 

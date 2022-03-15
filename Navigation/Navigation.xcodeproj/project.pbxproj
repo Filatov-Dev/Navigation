@@ -16,6 +16,7 @@
 		966F7BE027D1313E00C6A662 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966F7BDF27D1313E00C6A662 /* ProfileViewController.swift */; };
 		966F7BE227D7761A00C6A662 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966F7BE127D7761A00C6A662 /* PostViewController.swift */; };
 		966F7BE427D77D4400C6A662 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966F7BE327D77D4400C6A662 /* InfoViewController.swift */; };
+		96A494F127DFA115008C1A20 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A494F027DFA115008C1A20 /* Post.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		966F7BDF27D1313E00C6A662 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		966F7BE127D7761A00C6A662 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		966F7BE327D77D4400C6A662 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		96A494F027DFA115008C1A20 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 			children = (
 				961AF54827DA6865003438D8 /* Profile */,
 				966F7BC927D1270700C6A662 /* AppDelegate.swift */,
+				96A494F027DFA115008C1A20 /* Post.swift */,
 				966F7BCD27D1270800C6A662 /* ViewController.swift */,
 				966F7BDD27D1311F00C6A662 /* FeedViewController.swift */,
 				966F7BE127D7761A00C6A662 /* PostViewController.swift */,
@@ -157,6 +160,7 @@
 				966F7BCE27D1270800C6A662 /* ViewController.swift in Sources */,
 				966F7BDE27D1311F00C6A662 /* FeedViewController.swift in Sources */,
 				966F7BE027D1313E00C6A662 /* ProfileViewController.swift in Sources */,
+				96A494F127DFA115008C1A20 /* Post.swift in Sources */,
 				966F7BCA27D1270700C6A662 /* AppDelegate.swift in Sources */,
 				961AF54A27DA688F003438D8 /* ProfileHeaderView.swift in Sources */,
 				966F7BE427D77D4400C6A662 /* InfoViewController.swift in Sources */,
