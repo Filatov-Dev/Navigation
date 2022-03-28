@@ -10,16 +10,6 @@ import UIKit
 
 class ProfileHeaderView: UIView {
     
-    override init(frame: CGRect) {
-
-        super.init(frame: frame)
-        addConstraints()
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     private let mainImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "21121")
@@ -90,6 +80,17 @@ class ProfileHeaderView: UIView {
     private var statusText: String = ""
     
     
+    override init(frame: CGRect) {
+
+        super.init(frame: frame)
+        addConstraints()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
     @objc func pressStatusButton() {
         statusLabel.text = statusTextField.text
         print(statusLabel.text ?? "Non")
@@ -108,8 +109,8 @@ class ProfileHeaderView: UIView {
         [mainImage, userName, statusLabel, statusButton, statusTextField].forEach{ addSubview($0) }
         
         NSLayoutConstraint.activate([
-            mainImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
-            mainImage.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            mainImage.topAnchor.constraint(equalTo: topAnchor, constant: 16),
+            mainImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             mainImage.widthAnchor.constraint(equalToConstant: 130),
             mainImage.heightAnchor.constraint(equalToConstant: 130)
         ])
@@ -121,8 +122,8 @@ class ProfileHeaderView: UIView {
         
         NSLayoutConstraint.activate([
             statusButton.topAnchor.constraint(equalTo: mainImage.bottomAnchor, constant: 16),
-            statusButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            statusButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            statusButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            statusButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             statusButton.heightAnchor.constraint(equalToConstant: 50)
         ])
         
@@ -135,8 +136,12 @@ class ProfileHeaderView: UIView {
         NSLayoutConstraint.activate([
             statusTextField.bottomAnchor.constraint(equalTo: statusButton.topAnchor, constant: -10),
             statusTextField.leadingAnchor.constraint(equalTo: mainImage.trailingAnchor, constant: 35),
-            statusTextField.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            statusTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             statusTextField.heightAnchor.constraint(equalToConstant: 40)
+        ])
+        
+        NSLayoutConstraint.activate([
+            bottomAnchor.constraint(equalTo: statusButton.bottomAnchor, constant: 16)
         ])
     }
     

@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         tabBarController.viewControllers = [feedNavigationController, profileNavigationViewController]
         tabBarController.tabBar.backgroundColor = .white
-        
+        tabBarController.selectedIndex = 1
         return true
     }
 

@@ -8,15 +8,15 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-
+    
     private let profile: ProfileHeaderView = {
-        let profile = ProfileHeaderView()
-        profile.translatesAutoresizingMaskIntoConstraints = false
-        return profile
+        let profileHeaderView = ProfileHeaderView()
+        
+        return profileHeaderView
     }()
     
     private lazy var tableView: UITableView = {
-        let table = UITableView()
+        let table = UITableView(frame: .zero, style: .grouped)
         table.translatesAutoresizingMaskIntoConstraints = false
         table.delegate = self
         table.dataSource = self
@@ -36,28 +36,22 @@ class ProfileViewController: UIViewController {
         title = "Profile"
         
         addView()
-        
-//        profile.addConstraints()
         setConstrains()
-        
-        arrayOfContent.append(profile)
-        arrayOfContent += posts
     }
     
     private func addView() {
-        [tableView, profile].forEach{ view.addSubview($0) }
+        [tableView].forEach{ view.addSubview($0) }
     }
     
     func setConstrains() {
         
         tableView.frame = view.bounds
         
-//        NSLayoutConstraint.activate([
-//            profile.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-//            profile.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            profile.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            profile.heightAnchor.constraint(equalToConstant: 220)
-//        ])
+    }
+    
+    
+    private func addPost() {
+        
     }
 }
 
@@ -65,13 +59,18 @@ class ProfileViewController: UIViewController {
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrayOfContent.count
+        return posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PostTableViewCell.self ), for: indexPath) as! PostTableViewCell
-        
+        cell.connectionWithPost(with: posts[indexPath.row])
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        profile
+    }
+    
     
 }
