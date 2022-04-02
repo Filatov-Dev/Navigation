@@ -15,6 +15,8 @@ class ProfileViewController: UIViewController {
         return profileHeaderView
     }()
     
+    
+    
     private lazy var tableView: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
         table.translatesAutoresizingMaskIntoConstraints = false
@@ -24,6 +26,8 @@ class ProfileViewController: UIViewController {
         return table
         
     }()
+    
+    private lazy var photosViewCell = PhotosTableViewCell()
     
     private var arrayOfContent = [Any]()
     private let posts = Post.makeArray()
@@ -46,31 +50,34 @@ class ProfileViewController: UIViewController {
     func setConstrains() {
         
         tableView.frame = view.bounds
-        
-    }
-    
-    
-    private func addPost() {
-        
     }
 }
 
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            return photosViewCell
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PostTableViewCell.self ), for: indexPath) as! PostTableViewCell
         cell.connectionWithPost(with: posts[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        profile
+        section == 0 ? profile : nil
     }
     
-    
 }
+
+
