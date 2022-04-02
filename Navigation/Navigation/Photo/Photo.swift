@@ -19,4 +19,14 @@ struct Photo {
         return array
     }
     
+    static func addImage() -> [UIImage] {
+        var array = [UIImage]()
+        
+        for x in 1...15 {
+            array.append(UIImage(named: String(x))!)
+        }
+        
+        return array
+    }
+    
 }
