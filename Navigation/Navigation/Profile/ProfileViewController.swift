@@ -7,7 +7,11 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+protocol Present: AnyObject {
+    func presentVC()
+}
+
+class ProfileViewController: UIViewController, UICollectionViewDelegate {
     
     private let profile: ProfileHeaderView = {
         let profileHeaderView = ProfileHeaderView()
@@ -48,7 +52,6 @@ class ProfileViewController: UIViewController {
     }
     
     func setConstrains() {
-        
         tableView.frame = view.bounds
     }
 }
@@ -61,14 +64,13 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
+        section == 0 ? 1 : posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            
-            
-            return photosViewCell
+            photosViewCell.collectionView.delegate = self
+            return PhotosTableViewCell()
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PostTableViewCell.self ), for: indexPath) as! PostTableViewCell
@@ -80,6 +82,42 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         section == 0 ? profile : nil
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath == IndexPath(row: 0, section: 0) {
+            tableView.deselectRow(at: indexPath, animated: true)
+
+            let photosViewController = PhotosViewController()
+            navigationController?.pushViewController(photosViewController, animated: true)
+        }
+    }
+    
 }
 
+extension ProfileViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return posts.count
+    }
 
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotosTableViewCell.identifier, for: indexPath)
+
+        return cell
+    }
+}
+
+extension ProfileViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+       let photoVC = PhotosViewController()
+        photoVC.title = "Photo Gallery"
+        navigationController?.pushViewController(photoVC, animated: true)
+    }
+
+    private var sideInset: CGFloat { return 12 }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        let width = (collectionView.bounds.width - sideInset * 3) / 4
+
+        return CGSize(width: width, height: width)
+    }
+}

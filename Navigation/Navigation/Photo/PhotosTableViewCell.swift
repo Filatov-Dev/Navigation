@@ -19,9 +19,7 @@ protocol PhotosTableViewCellDelegate: AnyObject {
 class PhotosTableViewCell: UITableViewCell, UITableViewDelegate {
     
 
-    static var identifier: String {
-        String(describing: PhotosTableViewCell.self)
-    }
+    static var identifier = "PhotosTableViewCell"
     
     var delegate: PhotosTableViewCellDelegate?
     
@@ -50,7 +48,7 @@ class PhotosTableViewCell: UITableViewCell, UITableViewDelegate {
         return button
     }()
     
-    private lazy var collectionView: UICollectionView = {
+    lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let collection = UICollectionView(
@@ -61,8 +59,9 @@ class PhotosTableViewCell: UITableViewCell, UITableViewDelegate {
         collection.register(CollectionViewCell.self,
                             forCellWithReuseIdentifier: CollectionViewCell.identifire
         )
-        collection.delegate = self
         collection.dataSource = self
+        collection.delegate = self
+        
         
         return collection
     }()
@@ -110,9 +109,6 @@ class PhotosTableViewCell: UITableViewCell, UITableViewDelegate {
         
         
     }
-}
-
-extension PhotosTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
@@ -126,28 +122,30 @@ extension PhotosTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
         return cell
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModels.count
     }
+}
+
+extension PhotosTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    
+    
+    
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 110, height: 110)
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.deselectItem(at: indexPath, animated: true)
-        let viewModel = viewModels[indexPath.row]
-        delegate?.collectionTableViewCellDidTupItem(with: viewModel)
+}
+
+extension PhotosTableViewCell: PhotosTableViewCellDelegate {
+    func collectionTableViewCellDidTupItem(with viewModel: Photo) {
+        
     }
     
     
 }
 
-extension PhotosTableViewCell: PhotosTableViewCellDelegate {
-    func collectionTableViewCellDidTupItem(with viewModel: Photo) {
-        print("LUPA BLY")
-    }
-    
-    
-}
+
