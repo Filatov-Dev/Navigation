@@ -12,7 +12,7 @@ struct PhotosTableViewCellVIewModel {
 }
 
 protocol PhotosTableViewCellDelegate: AnyObject {
-    func collectionTableViewCellDidTupItem(with viewModel: Photo)
+    func collectionTableViewCellDidTupItem()
 }
 
 
@@ -21,9 +21,7 @@ class PhotosTableViewCell: UITableViewCell, UITableViewDelegate {
 
     static var identifier = "PhotosTableViewCell"
     
-    var delegate: PhotosTableViewCellDelegate?
-    
-    let lastVC = PhotosViewController()
+    weak var delegate: PhotosTableViewCellDelegate?
     
     private var viewModels = Photo.addPicture()
     
@@ -95,7 +93,7 @@ class PhotosTableViewCell: UITableViewCell, UITableViewDelegate {
             collectionView.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 8),
             collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
             collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
-            collectionView.heightAnchor.constraint(equalToConstant: 80),
+            collectionView.heightAnchor.constraint(equalToConstant: 110),
             
             
             contentView.bottomAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 8)
@@ -106,7 +104,7 @@ class PhotosTableViewCell: UITableViewCell, UITableViewDelegate {
     
     @objc func collectionButton() {
         print("Button was tapt")
-        
+        delegate?.collectionTableViewCellDidTupItem()
         
     }
     
@@ -117,7 +115,6 @@ class PhotosTableViewCell: UITableViewCell, UITableViewDelegate {
         ) as? CollectionViewCell else {
             fatalError()
         }
-        cell.delegate = self
         cell.configure(with: viewModels[indexPath.row])
         return cell
     }
@@ -141,7 +138,7 @@ extension PhotosTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
 }
 
 extension PhotosTableViewCell: PhotosTableViewCellDelegate {
-    func collectionTableViewCellDidTupItem(with viewModel: Photo) {
+    func collectionTableViewCellDidTupItem() {
         
     }
     

@@ -44,7 +44,15 @@ class CollectionViewCell: UICollectionViewCell {
     
     private func layout() {
         contentView.addSubview(picture)
-        picture.frame = contentView.bounds
+        let width = contentView.layer.bounds.width
+        let height = contentView.layer.bounds.height
+        
+        NSLayoutConstraint.activate([
+            picture.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            picture.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            picture.widthAnchor.constraint(equalToConstant: width ),
+            picture.heightAnchor.constraint(equalToConstant: height)
+        ])
     }
     
     func configure(with viewModel: Photo) {

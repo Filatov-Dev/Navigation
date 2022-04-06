@@ -70,7 +70,9 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             photosViewCell.collectionView.delegate = self
-            return PhotosTableViewCell()
+            let cell = PhotosTableViewCell()
+            cell.delegate = self
+            return cell
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PostTableViewCell.self ), for: indexPath) as! PostTableViewCell
@@ -119,5 +121,12 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
         let width = (collectionView.bounds.width - sideInset * 3) / 4
 
         return CGSize(width: width, height: width)
+    }
+}
+
+extension ProfileViewController: PhotosTableViewCellDelegate {
+    func collectionTableViewCellDidTupItem() {
+        let photoVC = PhotosViewController()
+        navigationController?.pushViewController(photoVC, animated: true)
     }
 }
